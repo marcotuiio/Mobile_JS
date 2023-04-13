@@ -1,40 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from  'expo-status-bar';
+import { Component } from  'react';
+import { StyleSheet, Text, View } from  'react-native';
 
-import ImageViewer from './components/ImageViewer';
-import Button from './components/Button';
+class App extends Component {
+    state = {
+        name:  'Marco',
+        year: 2021,
+        color: ['blue']
+    }
 
-
-const PlaceholderImage = require('./assets/background-image.png');
-
-export default function App() {
+    updateYear () {
+        this.setState({ year: 2023 })
+    }
+  
+    render() {
     return (
-        <View style={styles.container}>
-            <View style={styles.imageContainer}>
-                <ImageViewer placeholderImageSource={PlaceholderImage} />
-            </View>
-            <View style={styles.footerContainer}>
-                <Button theme="primary" label="Escolha uma foto" />
-                <Button label="Usar essa foto" />
-            </View>
-            <StatusBar style="auto" />
-        </View>
+      <View>
+        <Text>My name is {this.state.name}</Text>
+        <Text onPress={() => this.updateYear()}>
+            My year is {this.state.year}
+        </Text>
+        <Text>My color is {this.state.color}</Text>
+        <StatusBar style="auto" />
+      </View>
     );
+  }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#25292e',
-        alignItems: 'center',
-        // justifyContent: 'center',
-    },
-    imageContainer: {
-        flex: 1,
-        paddingTop: 58,
-    },
-    footerContainer: {
-        flex: 1 / 3,
-        alignItems: 'center',
-      },    
-});
+export default App;
