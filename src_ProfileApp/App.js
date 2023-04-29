@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet, Text, View} from 'react-native';
 
-
 export default class App extends Component {
    render() {
        return (
            <View style={styles.container}>
                <View style={styles.cardContainer}>
                    <View style={styles.cardImageContainer}>
-                       <Image style={styles.cardImage} source={require('./assets/user.jpg')}/>
+                       <Image style={styles.cardImage} source={require('./user.jpg')}/>
                    </View>
                    <View>
                        <Text style={styles.cardTitle}>

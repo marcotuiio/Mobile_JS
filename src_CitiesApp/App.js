@@ -5,9 +5,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import AddCity from './src/AddCity'
 
-
 const Tab = createMaterialBottomTabNavigator()
-
 
 export default class App extends Component {
 
@@ -50,8 +48,6 @@ export default class App extends Component {
           <Tab.Screen name='Add City'>
             {() => <AddCity addCity={this.addCity} />}
           </Tab.Screen>
-
-
         </Tab.Navigator>
       </NavigationContainer>
     )
