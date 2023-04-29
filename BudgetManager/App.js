@@ -80,13 +80,13 @@ export default class App extends Component {
   render() {
     return (
       <NavigationContainer>
-        <Tab.Navigator>
-          <Tab.Screen name='List Months'>
-            {props => <BudgetsNavScreen {...props} 
+        <Tab.Navigator  style={{backgroundColor: '#960FC7'}}>
+          <Tab.Screen name='List Months' style={{backgroundColor: 'purple'}}>
+            {props => <BudgetsNavScreen {...props}
               budgets={this.state.budgets}
               addExpense={this.addExpense} />}
           </Tab.Screen>
-          <Tab.Screen name='Add Budget'>
+          <Tab.Screen name='Add Monthly Budget' style={{backgroundColor: 'purple'}}>
             {() => <AddMonthBudget addMonthBudget={this.addMonthBudget} />}
           </Tab.Screen>
         </Tab.Navigator>

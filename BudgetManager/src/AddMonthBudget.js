@@ -3,6 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
+  Image,
   TextInput,
   TouchableOpacity
 } from 'react-native'
@@ -42,7 +43,12 @@ class AddMonthBudget extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.heading}>Monthly Budget</Text>
+        <View style={styles.containerCard}>
+          <View style={styles.cardImageContainer}>
+            <Image source={require('/home/marcotuiio/Mobile_JS/BudgetManager/assets/user.jpg')} style={styles.cardImage} />
+          </View>
+        </View>
+        <Text style={styles.heading}>New Monthly Budget</Text>
         <TextInput
           placeholder='Month'
           onChangeText={val => this.onChangeText('month', val)}
@@ -74,7 +80,7 @@ class AddMonthBudget extends React.Component {
 const styles = StyleSheet.create({
   button: {
     height: 50,
-    backgroundColor: '#666',
+    backgroundColor: '#6750A4',
     justifyContent: 'center',
     alignItems: 'center',
     margin: 10
@@ -84,22 +90,46 @@ const styles = StyleSheet.create({
     fontSize: 18
   },
   heading: {
-    color: 'white',
+    color: '#000',
     fontSize: 40,
     marginBottom: 10,
     alignSelf: 'center'
   },
   container: {
-    backgroundColor: '#1976D2',
+    backgroundColor: '#ffffff',
     flex: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginBottom: 100
   },
   input: {
     margin: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#EADDFF',
+    borderColor: '#6750A4',
     paddingHorizontal: 8,
     height: 50
-  }
+  },
+  containerCard: {
+    alignItems: 'center',
+    backgroundColor: 'white',
+    borderWidth: 3,
+    borderColor: 'white',
+    marginBottom: 80,
+  },
+  cardImageContainer: {
+    alignItems: 'center',
+    backgroundColor: 'white',
+    borderWidth: 3,
+    borderColor: '#6750A4',
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    marginTop: 30,
+    paddingTop: 15
+  },
+  cardImage: {
+    width: 85,
+    height: 85
+  },
 })
 
 export default AddMonthBudget

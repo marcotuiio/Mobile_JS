@@ -68,14 +68,12 @@ class MonthBudget extends React.Component {
           placeholder='Expense name'
           value={this.state.expense_name}
           style={styles.input}
-          placeholderTextColor='white'
         />
         <TextInput
           onChangeText={val => this.onChangeText('expense_total', val)}
           placeholder='Expense total'
           value={this.state.expense_total}
           style={[styles.input, styles.input2]}
-          placeholderTextColor='white'
         />
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={this.addExpense}>
@@ -99,7 +97,7 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     backgroundColor: colors.primary,
-    color: 'white',
+    placeholderTextColor: colors.secondary,
     paddingHorizontal: 8,
     position: 'absolute',
     width: '100%',
@@ -117,7 +115,7 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 50,
-    backgroundColor: '#1976D2',
+    backgroundColor: '#6750A4',
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -126,14 +124,14 @@ const styles = StyleSheet.create({
   },
   expenseContainer: {
     paddingLeft: 16,
-    borderBottomColor: '#1976D2',
+    borderBottomColor: '#6750A4',
     borderBottomWidth: 2,
     width: '100%'
   },
   rowContainer: {
     flexDirection: 'row',
-    width: '60%',
-    justifyContent: 'space-between'
+    width: '100%',
+    justifyContent: 'space-evenly'
   },
   expenseName: {
     fontSize: 20

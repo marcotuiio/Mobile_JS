@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   productContainer: {
     padding: 10,
     borderBottomWidth: 2,
-    borderBottomColor: '#1976D2'
+    borderBottomColor: '#6750A4'
   },
   month: {
     fontSize: 20,
