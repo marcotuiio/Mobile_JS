@@ -4,13 +4,13 @@ import MonthBudget from './MonthBudget'
 
 const BudgetsNav = createStackNavigator();
 
-const BudgetsNavScreen = ({ Budgets }) => (
+const BudgetsNavScreen = ({ budgets, addExpense }) => (
   <BudgetsNav.Navigator>
     <BudgetsNav.Screen name="Budgets">
-      {props => <Budgets {...props} Budgets={Budgets} />}
+      {props => <Budgets {...props} budgets={budgets} />}
     </BudgetsNav.Screen>
-    <BudgetsNav.Screen name="ProductCard" options={({ route }) => ({ title: route.params.Budgets.month })}>
-      {props => <Product {...props} />}
+    <BudgetsNav.Screen name="MonthBudget" options={({ route }) => ({ title: route.params.monthBudget.month })}>
+      {props => <MonthBudget {...props} addExpense={addExpense} />}
     </BudgetsNav.Screen>
   </BudgetsNav.Navigator>
 )

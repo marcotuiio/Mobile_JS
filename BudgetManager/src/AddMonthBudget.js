@@ -9,8 +9,8 @@ import {
 
 import * as Random from 'expo-random'
 import { colors } from './theme'
-class AddProduct extends React.Component {
-  
+
+class AddMonthBudget extends React.Component {
   state = {
     month: '',
     year: '',
@@ -20,26 +20,29 @@ class AddProduct extends React.Component {
     this.setState({ [key]: value })
   }
   submit = () => {
-    if (this.state.month === '' || this.state.budget) alert('please complete month and budget')
-    if (this.state.year === '') this.state.year = new Date().getFullYear()
-    const monthBudget = {
-      month: this.state.month,
-      budget: this.state.budget,
-      year: this.state.year,
-      id: String(Random.getRandomBytes(8)),
-      expenses: []
+    if (this.state.month === '' || this.state.budget === '') {
+      alert('please complete month and budget')
+    } else {
+      if (this.state.year === '') this.state.year = new Date().getFullYear()
+      const monthBudget = {
+        month: this.state.month,
+        budget: this.state.budget,
+        year: this.state.year,
+        id: String(Random.getRandomBytes(8)),
+        expenses: []
+      }
+      this.props.addMonthBudget(monthBudget)
+      this.setState({
+        month: '',
+        year: '',
+        budget: ''
+      })
     }
-    this.props.addMonthBudget(monthBudget)
-    this.setState({
-      month: '',
-      year: '',
-      budget: ''
-    })
   }
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.heading}>Products</Text>
+        <Text style={styles.heading}>Monthly Budget</Text>
         <TextInput
           placeholder='Month'
           onChangeText={val => this.onChangeText('month', val)}
@@ -99,4 +102,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default AddProduct
+export default AddMonthBudget

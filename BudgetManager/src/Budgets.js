@@ -13,7 +13,7 @@ import { colors } from './theme'
 
 export default class Budgets extends React.Component {
   navigate = (item) => {
-    this.props.navigation.navigate('MonthBudget', { product: item })
+    this.props.navigation.navigate('MonthBudget', { monthBudget: item })
   }
 
   render() {
@@ -23,14 +23,14 @@ export default class Budgets extends React.Component {
       <ScrollView contentContainerStyle={[!budgets.length && { flex: 1 }]}>
         <View style={[!budgets.length && { justifyContent: 'center', flex: 1 }]}>
           {
-            !budgets.length && <CenterMessage message='No saved budgets!' />
+            !budgets.length && <CenterMessage message='No saved month budgets!' />
           }
           {
             budgets.map((item, index) => (
               <TouchableWithoutFeedback onPress={() => this.navigate(item)} key={index} >
                 <View style={styles.productContainer}>
-                  <Text style={styles.name}>{item.name}</Text>
-                  <Text style={styles.price}>{item.price}</Text>
+                  <Text style={styles.month}>{item.month}, {item.year}</Text>
+                  <Text style={styles.budget}>${item.budget}</Text>
                 </View>
               </TouchableWithoutFeedback>
             ))
@@ -47,10 +47,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderBottomColor: '#1976D2'
   },
-  name: {
+  month: {
     fontSize: 20,
   },
-  price: {
+  budget: {
     color: 'rgba(0, 0, 0, .5)'
   },
 })
