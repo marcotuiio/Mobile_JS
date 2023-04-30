@@ -11,8 +11,9 @@ export default class AlertPopUp extends Component {
     this.showAlert = this.showAlert.bind(this)
   }
   showAlert() {
+    const { index, removeExpense } = this.props
     Alert.alert(
-      'Are you sure you want to delete this budget?',
+      'Are you sure you want to delete this expense?',
       'This action cannot be undone.',
       [
         {
@@ -22,7 +23,10 @@ export default class AlertPopUp extends Component {
         },
         {
           text: 'Confirm',
-          onPress: () => this.setState({ showMessage: true })
+          onPress: () => {
+              removeExpense(index),
+              this.setState({ showMessage: true })
+          }
         }
       ]
     )
@@ -33,12 +37,10 @@ export default class AlertPopUp extends Component {
       <View style={styles.container}>
         <TouchableHighlight onPress={this.showAlert} style={styles.button}>
           <View>
-            <Image style={styles.cardImage} source={require('/home/marcotuiio/Mobile_JS/BudgetManager/assets/trash.png')}/>
+            <Image style={styles.cardImage} source={require('/home/marcotuiio/Mobile_JS/BudgetManager/assets/trash.png')} />
           </View>
         </TouchableHighlight>
-        {
-          showMessage && <Text>DELETED</Text>
-        }
+        {/* { showMessage && <Text>DELETED</Text> } */}
       </View>
     )
   }
@@ -46,6 +48,7 @@ export default class AlertPopUp extends Component {
 
 styles = StyleSheet.create({
   container: {
+    marginRight: 10,
     justifyContent: 'center',
     flex: 1
   },

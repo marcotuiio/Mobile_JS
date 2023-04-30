@@ -9,8 +9,6 @@ import {
 } from 'react-native'
 
 import * as Random from 'expo-random'
-import { colors } from './theme'
-
 class AddMonthBudget extends React.Component {
   state = {
     month: '',

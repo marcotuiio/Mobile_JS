@@ -5,12 +5,12 @@ import { Image } from 'react-native';
 
 const BudgetsNav = createStackNavigator();
 
-const BudgetsNavScreen = ({ budgets, addExpense }) => (
+const BudgetsNavScreen = ({ budgets, addExpense, removeExpense }) => (
   <BudgetsNav.Navigator
     screenOptions={{
       headerTintColor: '#000',
       headerStyle: {
-        backgroundColor: '#D8B3E0',
+        backgroundColor: '#EADDFF',
       },
       headerRight: () => (
         <Image
@@ -23,7 +23,7 @@ const BudgetsNavScreen = ({ budgets, addExpense }) => (
       {props => <Budgets {...props} budgets={budgets} />}
     </BudgetsNav.Screen>
     <BudgetsNav.Screen name="MonthBudget" options={({ route }) => ({ title: route.params.monthBudget.month })}>
-      {props => <MonthBudget {...props} addExpense={addExpense} />}
+      {props => <MonthBudget {...props} addExpense={addExpense} removeExpense={removeExpense} />}
     </BudgetsNav.Screen>
   </BudgetsNav.Navigator>
 );

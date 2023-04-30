@@ -38,25 +38,25 @@ export default class App extends Component {
     })
   }
 
-  editExpense = (expense, monthBudget) => {
-    const index = this.state.budgets.findIndex(item => {
-      return item.id === monthBudget.id
-    })
-    const chosenMonth = this.state.budgets[index]
-    const expenseIndex = chosenMonth.expenses.findIndex(item => {
-      return item.expense_name === expense.expense_name
-    })
-    // chosenMonth.expenses[expenseIndex] = expense
-    // como saber se a expense foi alterada?
-    const budgets = [
-      ...this.state.budgets.slice(0, index),
-      chosenMonth,
-      ...this.state.budgets.slice(index + 1)
-    ]
-    this.setState({
-      budgets
-    })
-  }
+  // editExpense = (expense, monthBudget) => {
+  //   const index = this.state.budgets.findIndex(item => {
+  //     return item.id === monthBudget.id
+  //   })
+  //   const chosenMonth = this.state.budgets[index]
+  //   const expenseIndex = chosenMonth.expenses.findIndex(item => {
+  //     return item.expense_name === expense.expense_name
+  //   })
+  //   // chosenMonth.expenses[expenseIndex] = expense
+  //   // como saber se a expense foi alterada?
+  //   const budgets = [
+  //     ...this.state.budgets.slice(0, index),
+  //     chosenMonth,
+  //     ...this.state.budgets.slice(index + 1)
+  //   ]
+  //   this.setState({
+  //     budgets
+  //   })
+  // }
 
   removeExpense = (expense, monthBudget) => {
     const index = this.state.budgets.findIndex(item => {
@@ -84,7 +84,8 @@ export default class App extends Component {
           <Tab.Screen name='List Months' style={{backgroundColor: 'purple'}}>
             {props => <BudgetsNavScreen {...props}
               budgets={this.state.budgets}
-              addExpense={this.addExpense} />}
+              addExpense={this.addExpense}
+              removeExpense={this.removeExpense} />}
           </Tab.Screen>
           <Tab.Screen name='Add Monthly Budget' style={{backgroundColor: 'purple'}}>
             {() => <AddMonthBudget addMonthBudget={this.addMonthBudget} />}

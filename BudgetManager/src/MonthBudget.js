@@ -14,23 +14,17 @@ import AlertPopUp from './AlertPopUp'
 
 class MonthBudget extends React.Component {
 
-  totalExpenses = () => {
-    const { monthBudget } = this.props.route.params
-    for (let i = 0; i < monthBudget.expenses.length; i++) {
-      total += Number(monthBudget.expenses[i].expense_total)
-    }
-    return total
-  }
-
   state = {
     expense_name: '',
     expense_total: ''
   }
+  
   onChangeText = (key, value) => {
     this.setState({
       [key]: value
     })
   }
+
   addExpense = () => {
     if (this.state.expense_name === '' || this.state.expense_total === '') return
     const { monthBudget } = this.props.route.params
@@ -39,6 +33,13 @@ class MonthBudget extends React.Component {
       expense_total: this.state.expense_total
     }
     this.props.addExpense(expense, monthBudget)
+    this.setState({ expense_name: '', expense_total: '' })
+  }
+
+  removeExpense = (index) => {
+    const { monthBudget } = this.props.route.params
+    const toRemove = monthBudget.expenses[index] 
+    this.props.removeExpense(toRemove, monthBudget)
     this.setState({ expense_name: '', expense_total: '' })
   }
   render() {
@@ -57,7 +58,10 @@ class MonthBudget extends React.Component {
                     <Text style={styles.expenseName}>{expense.expense_name}</Text>
                     <Text style={styles.expenseInfo}>${expense.expense_total}</Text>
                   </View>
-                  <AlertPopUp />
+                  <AlertPopUp 
+                    index={index}
+                    removeExpense={this.removeExpense}
+                  />
                 </View>
               ))
             }
@@ -68,12 +72,14 @@ class MonthBudget extends React.Component {
           placeholder='Expense name'
           value={this.state.expense_name}
           style={styles.input}
+          // placeholderTextColor='black'
         />
         <TextInput
           onChangeText={val => this.onChangeText('expense_total', val)}
           placeholder='Expense total'
           value={this.state.expense_total}
           style={[styles.input, styles.input2]}
+          // placeholderTextColor='black'
         />
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={this.addExpense}>
@@ -97,7 +103,6 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     backgroundColor: colors.primary,
-    placeholderTextColor: colors.secondary,
     paddingHorizontal: 8,
     position: 'absolute',
     width: '100%',
@@ -124,14 +129,14 @@ const styles = StyleSheet.create({
   },
   expenseContainer: {
     paddingLeft: 16,
-    borderBottomColor: '#6750A4',
-    borderBottomWidth: 2,
-    width: '100%'
+    width: '87%'
   },
   rowContainer: {
     flexDirection: 'row',
     width: '100%',
-    justifyContent: 'space-evenly'
+    justifyContent: 'space-evenly',
+    borderBottomColor: '#6750A4',
+    borderBottomWidth: 2,
   },
   expenseName: {
     fontSize: 20
