@@ -42,6 +42,7 @@ class MonthBudget extends React.Component {
     this.props.removeExpense(toRemove, monthBudget)
     this.setState({ expense_name: '', expense_total: '' })
   }
+  
   render() {
     const { monthBudget } = this.props.route.params
     return (

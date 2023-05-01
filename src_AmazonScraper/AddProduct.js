@@ -9,29 +9,30 @@ import {
 } from 'react-native'
 
 import * as Random from 'expo-random'
-class AddMonthBudget extends React.Component {
+class AddProduct extends React.Component {
   state = {
-    month: '',
-    year: '',
-    budget: ''
+    url: '',
+    product_name: '',
+    price: '',
+    img_src: ''
   }
   onChangeText = (key, value) => {
     this.setState({ [key]: value })
   }
   submit = () => {
-    if (this.state.month === '' || this.state.budget === '') {
-      alert('please complete month and budget')
+    if (this.state.url === '') {
+      alert('please complete url')
     } else {
-      if (this.state.year === '') this.state.year = new Date().getFullYear()
-      const monthBudget = {
-        month: this.state.month,
-        budget: this.state.budget,
-        year: this.state.year,
+      const scrapredResult = Scaper(this.state.url)
+      const product = {
+        url: this.state.url,
+        product_name: scrapredResult.name,
+        price: scrapredResult.price,
+        img_src: scrapredResult.image,
         id: String(Random.getRandomBytes(8)),
-        expenses: []
       }
-      this.props.addMonthBudget(monthBudget)
-      this.setState({month: '', year: '', budget: ''})
+      this.props.addProduct(product)
+      this.setState({url: '', product_name: '', price: '', img_src: ''})
     }
   }
   
@@ -43,28 +44,16 @@ class AddMonthBudget extends React.Component {
             <Image source={require('/home/marcotuiio/Mobile_JS/BudgetManager/assets/user.jpg')} style={styles.cardImage} />
           </View>
         </View>
-        <Text style={styles.heading}>New Monthly Budget</Text>
+        <Text style={styles.heading}>New Product</Text>
         <TextInput
-          placeholder='Month'
-          onChangeText={val => this.onChangeText('month', val)}
+          placeholder='Amazon URL'
+          onChangeText={val => this.onChangeText('url', val)}
           style={styles.input}
-          value={this.state.month}
-        />
-        <TextInput
-          placeholder='Year'
-          onChangeText={val => this.onChangeText('year', val)}
-          style={styles.input}
-          value={this.state.year}
-        />
-        <TextInput
-          placeholder='Budget'
-          onChangeText={val => this.onChangeText('budget', val)}
-          style={styles.input}
-          value={this.state.budget}
+          value={this.state.url}
         />
         <TouchableOpacity onPress={this.submit}>
           <View style={styles.button}>
-            <Text style={styles.buttonText}>Add Budget</Text>
+            <Text style={styles.buttonText}>Add Product</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -127,4 +116,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default AddMonthBudget
+export default AddProduct
