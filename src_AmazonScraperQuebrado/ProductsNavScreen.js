@@ -14,7 +14,7 @@ const ProductsNavScreen = ({ products, removeProduct }) => (
       },
       headerRight: () => (
         <Image
-          source={require('/home/marcotuiio/Mobile_JS/BudgetManager/assets/user.jpg')}
+          source={require('/home/marcotuiio/Mobile_JS/AmazonScraper/assets/taytay.jpg')}
           style={{ width: 30, height: 30, marginRight: 20 }}
         />
       ),

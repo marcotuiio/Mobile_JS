@@ -3,6 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
+  Image,
   TouchableWithoutFeedback,
   ScrollView,
   PanResponder,
@@ -54,7 +55,7 @@ export default class Products extends React.Component {
     const toRemove = products[index];
     this.props.removeProduct(toRemove);
   };
-
+  
   render() {
     const { products } = this.props;
     console.log('products', this.props.products);
@@ -69,9 +70,9 @@ export default class Products extends React.Component {
                   style={[styles.rowContainer, this.position.getLayout()]}
                   {...this.panResponder.panHandlers}
                 >
-                  <View style={styles.imageContainer}>
-                    <Image style={styles.image} source={require(item.img_src)} />
-                  </View>
+                  {/* <View style={styles.imageContainer}>
+                    <Image style={styles.image} source={require(item.image)} />
+                  </View> */}
                   <View style={styles.prodContainer}>
                     <Text style={styles.name}>{item.product_name}</Text>
                     <Text style={styles.price}>${item.price}</Text>

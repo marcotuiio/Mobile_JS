@@ -14,7 +14,7 @@ const BudgetsNavScreen = ({ budgets, addExpense, removeExpense }) => (
       },
       headerRight: () => (
         <Image
-          source={require('/home/marcotuiio/Mobile_JS/BudgetManager/assets/user.jpg')}
+          source={require('/home/marcotuiio/Mobile_JS/BudgetManager/assets/eu.jpeg')}
           style={{ width: 30, height: 30, marginRight: 20 }}
         />
       ),

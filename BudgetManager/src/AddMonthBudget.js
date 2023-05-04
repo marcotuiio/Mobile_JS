@@ -39,8 +39,8 @@ class AddMonthBudget extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.containerCard}>
-          <View style={styles.cardImageContainer}>
-            <Image source={require('/home/marcotuiio/Mobile_JS/BudgetManager/assets/user.jpg')} style={styles.cardImage} />
+          <View style={styles.cardImageCircle}>
+            <Image source={require('/home/marcotuiio/Mobile_JS/BudgetManager/assets/eu.jpeg')} style={styles.cardImage} />
           </View>
         </View>
         <Text style={styles.heading}>New Monthly Budget</Text>
@@ -110,20 +110,21 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     marginBottom: 80,
   },
-  cardImageContainer: {
+  cardImageCircle: {
     alignItems: 'center',
     backgroundColor: 'white',
     borderWidth: 3,
     borderColor: '#6750A4',
-    width: 120,
-    height: 120,
-    borderRadius: 60,
+    width: 130,
+    height: 130,
+    borderRadius: 80,
     marginTop: 30,
-    paddingTop: 15
   },
   cardImage: {
-    width: 85,
-    height: 85
+    marginTop: 3,
+    borderRadius: 60,
+    width: 120,
+    height: 120
   },
 })
 

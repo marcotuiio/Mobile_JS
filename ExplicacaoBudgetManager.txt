@@ -1,0 +1,7 @@
+A aplicação permite que o usuário cadastre um mês e seu respectivo orçamento máximo, para controle de gastos. 
+Depois é possível acessar cada mês e adicionar (ou remover) as despesas, com nome e valor. Na lista principal de
+meses existe um auxílio visual: meses em que as despesas formam maiores que o orçamento ficaram marcados em
+em vermelho, e os demais ficam verdes. Existe também uma foto de perfil exibida na barra de navegaação superior 
+e na página de adiconar novo mês.
+Posteriormente gostaria que os dados persistissem para que eu realmente pudesse utilizar desse app e alterar a 
+a foto sem mexer na fonte.

@@ -22,6 +22,6 @@ async function scrapeProduct(url) {
   return product;
 }
 
-scrapeProduct('https://www.amazon.com.br/PlayStation%C2%AE5-God-of-War-Ragnar%C3%B6k/dp/B0BLW5C5KN/ref=sr_1_2?keywords=ps5&sr=8-2&ufe=app_do%3Aamzn1.fos.25548f35-0de7-44b3-b28e-0f56f3f96147')
+scrapeProduct('https://www.amazon.com.br/Cereal-Matinal-Tradicional-Nescau-770g/dp/B081QVY2TD/ref=sxts_rp_s_1_0?content-id=amzn1.sym.086bd8c4-d9e4-415a-8862-4106b70dc76c%3Aamzn1.sym.086bd8c4-d9e4-415a-8862-4106b70dc76c&cv_ct_cx=nescau%2Bcereal&keywords=nescau%2Bcereal&pd_rd_i=B081QVY2TD&pd_rd_r=527ef060-6af7-4699-9984-2112747859dc&pd_rd_w=tImjK&pd_rd_wg=u3jFi&pf_rd_p=086bd8c4-d9e4-415a-8862-4106b70dc76c&pf_rd_r=0F1C2CCVY6WK4WPF2J72&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sr=1-1-f0029781-b79b-4b60-9cb0-eeda4dea34d6&th=1')
   .then(product => console.log(product))
   .catch(error => console.error(error));

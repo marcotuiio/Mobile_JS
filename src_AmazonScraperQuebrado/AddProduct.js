@@ -8,8 +8,38 @@ import {
   TouchableOpacity
 } from 'react-native'
 
+import axios, { AxiosHeaders } from 'axios'
+import cheerio from 'cheerio'
 import * as Random from 'expo-random'
 class AddProduct extends React.Component {
+
+  async Scraper(url) {
+    const product = {
+      name: '',
+      price: '',
+      image: '',
+    }
+
+    const { data } = await axios.get(url, {
+      headers: {
+        'Access-Allow-Credentials': 'true',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization, Content-Length, X-Requested-With',
+        'Access-Control-Allow-Methods': 'GET',
+    }
+  })
+    const $ = cheerio.load(data)
+    const item = $('div#dp')
+
+    product.name = $(item).find('h1 span#productTitle').text()
+    product.price = $(item).find('span .a-price-whole').first().text()
+    product.image = $(item).find('img#landingImage').attr('src')
+    
+    console.log(product.name)
+    console.log(product.price)
+    console.log(product.image)   
+  }
+
   state = {
     url: '',
     product_name: '',
@@ -23,7 +53,7 @@ class AddProduct extends React.Component {
     if (this.state.url === '') {
       alert('please complete url')
     } else {
-      const scrapredResult = Scaper(this.state.url)
+      const scrapredResult = this.Scraper(this.state.url)
       const product = {
         url: this.state.url,
         product_name: scrapredResult.name,
@@ -41,7 +71,7 @@ class AddProduct extends React.Component {
       <View style={styles.container}>
         <View style={styles.containerCard}>
           <View style={styles.cardImageContainer}>
-            <Image source={require('/home/marcotuiio/Mobile_JS/BudgetManager/assets/user.jpg')} style={styles.cardImage} />
+            <Image source={require('/home/marcotuiio/Mobile_JS/AmazonScraper/assets/taytay.jpg')} style={styles.cardImage} />
           </View>
         </View>
         <Text style={styles.heading}>New Product</Text>

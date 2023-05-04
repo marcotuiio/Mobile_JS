@@ -51,9 +51,9 @@ export default class Budgets extends React.Component {
                   <View style={[styles.rowContainer, { backgroundColor: bg }]}>
                     <View style={styles.monthContainer}>
                       <Text style={styles.month}>{item.month}, {item.year}</Text>
-                      <Text style={styles.budget}>${item.budget}</Text>
+                      <Text style={styles.budget}>BUDGET ${item.budget}</Text>
                     </View>
-                    <Text style={styles.saldo}>SALDO ${saldo}</Text>
+                    <Text style={styles.saldo}>BALANCE ${saldo}</Text>
                   </View>
                 </TouchableWithoutFeedback>
               )

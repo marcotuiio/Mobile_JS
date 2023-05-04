@@ -3,6 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
+  Image
 } from 'react-native'
 
 class ProductCard extends React.Component {
@@ -13,12 +14,12 @@ class ProductCard extends React.Component {
       <View style={{ flex: 1 }}>
         <View style={styles.productContainer}>
           <View style={styles.cardImageContainer}>
-            <Image style={styles.cardImage} source={require(product.src_img)} />
+            <Image style={styles.cardImage} source={require(product.image)} />
           </View>
           <View style={styles.expenseContainer}>
-            <Text style={styles.name}>{expense.product_name}</Text>
-            <Text style={styles.price}>${expense.price}</Text>
-            <Text style={styles.url}>link: {expense.url}</Text>
+            <Text style={styles.name}>{product.product_name}</Text>
+            <Text style={styles.price}>${product.price}</Text>
+            <Text style={styles.url}>link: {product.url}</Text>
           </View>
         </View>
       </View>
@@ -39,8 +40,9 @@ const styles = StyleSheet.create({
     paddingTop: 15
   },
   cardImage: {
-    width: 80,
-    height: 80
+    width: 110,
+    height: 110,
+    borderRadius: 60,
   },
   container: {
     flex: 1
