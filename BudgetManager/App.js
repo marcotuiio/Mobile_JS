@@ -92,6 +92,6 @@ export default class App extends Component {
           </Tab.Screen>
         </Tab.Navigator>
       </NavigationContainer>
-    )
+    ) 
   }
 }

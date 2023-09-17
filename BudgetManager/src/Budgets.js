@@ -24,7 +24,7 @@ export default class Budgets extends React.Component {
   }
 
   totalExpenses = (monthBudget) => {
-    total = 0
+    let total = 0
     for (let i = 0; i < monthBudget.expenses.length; i++) {
       total += Number(monthBudget.expenses[i].expense_total)
     }
